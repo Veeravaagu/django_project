@@ -4,6 +4,8 @@ A full-stack Django web application featuring user authentication, profile manag
   
 🔗 Live Demo:
 https://mydjangoapplication-e19111bdacb0.herokuapp.com/
+<img width="1148" height="550" alt="Screenshot 2026-01-29 at 10 33 22 PM" src="https://github.com/user-attachments/assets/090a2426-f9d2-4d92-b2c6-d16720e8e2b1" />
+
 
 Key Features
 * User registration, login, logout, and password reset via email
