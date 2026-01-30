@@ -1,0 +1,11 @@
+Django==6.0.1
+python-dotenv
+Pillow
+django-crispy-forms
+crispy-bootstrap4
+django-storages
+boto3
+gunicorn
+whitenoise
+dj-database-url
+psycopg2-binary
