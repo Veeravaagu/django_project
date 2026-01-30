@@ -1,0 +1,10 @@
+*.ipynb
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+.envrc
+.DS_Store
+data/
+datasets/
