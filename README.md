@@ -58,28 +58,25 @@ Environment Variables
 
 Local Setup
 
-  git clone https://github.com/your-username/your-repo-name.git
-  cd your-repo-name
-
-  python -m venv venv
-  source venv/bin/activate
-
-  pip install -r requirements.txt
-  python manage.py migrate
-  python manage.py runserver
+    git clone https://github.com/your-username/your-repo-name.git
+    cd your-repo-name
+    python -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    python manage.py migrate
+    python manage.py runserver
 
 
 Deployment
-
-  Deployed using Heroku (Heroku-24 stack)
-  Python version specified via .python-version
-  Static files collected using collectstatic
-  Media served directly from AWS S3
+* Deployed using Heroku (Heroku-24 stack)
+* Python version specified via .python-version
+* Static files collected using collectstatic
+* Media served directly from AWS S3
 
 Future Improvements
-  Add social authentication (Google/GitHub OAuth)
-  Replace SQLite with managed Postgres in production
-  Add pagination and search to blog posts
-  Improve test coverage with Django TestCase and pytest
-  Introduce CI/CD pipeline (GitHub Actions)
+* Add social authentication (Google/GitHub OAuth)
+* Replace SQLite with managed Postgres in production
+* Add pagination and search to blog posts
+* Improve test coverage with Django TestCase and pytest
+* Introduce CI/CD pipeline (GitHub Actions)
 
