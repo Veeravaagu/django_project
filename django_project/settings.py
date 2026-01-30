@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 import os
+import django_on_heroku
 from dotenv import load_dotenv
 import certifi
 os.environ["SSL_CERT_FILE"] = certifi.where()
@@ -162,3 +163,4 @@ STORAGES = {
     "staticfiles": {"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage"},
 }
 
+django_on_heroku.settings(locals())
