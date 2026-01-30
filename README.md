@@ -43,6 +43,7 @@ Architecture Highlights
 * Explicit Python version locking using .python-version to ensure environment consistency.
 
 Environment Variables
+
   The following environment variables are required:
   
     SECRET_KEY=your_django_secret_key
