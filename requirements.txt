@@ -6,7 +6,7 @@ psycopg2-binary==2.9.11
 django-crispy-forms==2.5
 crispy-bootstrap4==2025.6
 django-storages==1.14.6
-django-on-heroku==1.1.2
+django-on-heroku==1.1.2f
 boto3==1.42.38
 python-dotenv==1.2.1
 Pillow==12.1.0
