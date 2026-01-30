@@ -1,18 +1,19 @@
 Django Blog Application
-  A full-stack Django web application featuring user authentication, profile management with image uploads, and cloud-hosted static/media assets. The application is deployed on Heroku   and uses AWS S3 for scalable media storage.
+
+A full-stack Django web application featuring user authentication, profile management with image uploads, and cloud-hosted static/media assets. The application is deployed on Heroku   and uses AWS S3 for scalable media storage.
   
 🔗 Live Demo:
-  https://mydjangoapplication-e19111bdacb0.herokuapp.com/
+https://mydjangoapplication-e19111bdacb0.herokuapp.com/
 
 Key Features
-  * User registration, login, logout, and password reset via email
-  * User profile management with profile picture uploads
-  * Media files hosted on AWS S3 for scalability
-  * Environment-based configuration using .env
-  * Production deployment on Heroku
-  * Secure handling of secrets and credentials
-  * Django Crispy Forms for clean, responsive UI
-  * Static asset handling with Whitenoise (production-ready)
+* User registration, login, logout, and password reset via email
+* User profile management with profile picture uploads
+* Media files hosted on AWS S3 for scalability
+* Environment-based configuration using .env
+* Production deployment on Heroku
+* Secure handling of secrets and credentials
+* Django Crispy Forms for clean, responsive UI
+* Static asset handling with Whitenoise (production-ready)
 
 Tech Stack
   Backend
