@@ -36,15 +36,13 @@ Frontend
   * Bootstrap (via crispy-bootstrap4)
 
 Architecture Highlights
-
-  Media uploads are stored in AWS S3 instead of the local filesystem, allowing the application to scale horizontally.
-  Environment variables are managed using python-dotenv locally and Heroku config vars in production.
-  Separate storage backends for static files and media files using Django’s STORAGES setting.
-  Secure email delivery via SMTP (Gmail) for password reset flows.
-  Explicit Python version locking using .python-version to ensure environment consistency.
+* Media uploads are stored in AWS S3 instead of the local filesystem, allowing the application to scale horizontally.
+* Environment variables are managed using python-dotenv locally and Heroku config vars in production.
+* Separate storage backends for static files and media files using Django’s STORAGES setting.
+* Secure email delivery via SMTP (Gmail) for password reset flows.
+* Explicit Python version locking using .python-version to ensure environment consistency.
 
 Environment Variables
-
   The following environment variables are required:
   
     SECRET_KEY=your_django_secret_key
