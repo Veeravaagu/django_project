@@ -16,22 +16,27 @@ Key Features
 * Static asset handling with Whitenoise (production-ready)
 
 Tech Stack
-  Backend
+
+Backend
   * Python 3.12
   * Django 6.0
   * Django Authentication Framework
-  Storage & Infrastructure
+
+Storage & Infrastructure
   * AWS S3 (media file storage)
   * django-storages + boto3
   * Heroku (deployment)
-  Database
+
+Database
   * SQLite (local development)
   * PostgreSQL (production-ready configuration)
-  Frontend
+
+Frontend
   * Django Templates
   * Bootstrap (via crispy-bootstrap4)
 
 Architecture Highlights
+
   Media uploads are stored in AWS S3 instead of the local filesystem, allowing the application to scale horizontally.
   Environment variables are managed using python-dotenv locally and Heroku config vars in production.
   Separate storage backends for static files and media files using Django’s STORAGES setting.
@@ -39,7 +44,9 @@ Architecture Highlights
   Explicit Python version locking using .python-version to ensure environment consistency.
 
 Environment Variables
+
   The following environment variables are required:
+  
     SECRET_KEY=your_django_secret_key
     DEBUG=False
     EMAIL_USER=your_email@gmail.com
@@ -50,6 +57,7 @@ Environment Variables
 
 
 Local Setup
+
   git clone https://github.com/your-username/your-repo-name.git
   cd your-repo-name
 
@@ -62,6 +70,7 @@ Local Setup
 
 
 Deployment
+
   Deployed using Heroku (Heroku-24 stack)
   Python version specified via .python-version
   Static files collected using collectstatic
