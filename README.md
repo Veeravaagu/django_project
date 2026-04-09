@@ -1,85 +1,62 @@
-Django Blog Application
+# Django Blog Application
 
-A full-stack Django web application featuring user authentication, profile management with image uploads, and cloud-hosted static/media assets. The application is deployed on Heroku   and uses AWS S3 for scalable media storage.
-  
-🔗 Live Demo:
-https://mydjangoapplication-e19111bdacb0.herokuapp.com/
+A Django blog app with authentication, user profiles, and production deployment support for **Render + Supabase Postgres**.
 
+## Key Features
+- User registration, login, logout, and password reset via email
+- User profile management with profile picture uploads
+- Environment-based configuration using `.env`
+- Static files served in production via WhiteNoise
+- PostgreSQL support via `DATABASE_URL`
 
-<img width="1148" height="550" alt="Screenshot 2026-01-29 at 10 33 22 PM" src="https://github.com/user-attachments/assets/090a2426-f9d2-4d92-b2c6-d16720e8e2b1" />
+## Tech Stack
+- Python 3.12
+- Django 6.0
+- Gunicorn + WhiteNoise
+- Supabase Postgres (production)
+- SQLite (local fallback)
 
+## Environment Variables
+Set these in Render (and optionally in local `.env`):
 
-Key Features
-* User registration, login, logout, and password reset via email
-* User profile management with profile picture uploads
-* Media files hosted on AWS S3 for scalability
-* Environment-based configuration using .env
-* Production deployment on Heroku
-* Secure handling of secrets and credentials
-* Django Crispy Forms for clean, responsive UI
-* Static asset handling with Whitenoise (production-ready)
+```bash
+SECRET_KEY=your_django_secret_key
+DEBUG=False
+DATABASE_URL=postgresql://postgres:<password>@<host>:6543/postgres?sslmode=require
+ALLOWED_HOSTS=your-service.onrender.com,your-custom-domain.com
+CSRF_TRUSTED_ORIGINS=https://your-service.onrender.com,https://your-custom-domain.com
+EMAIL_USER=your_email@gmail.com
+EMAIL_PASS=your_email_app_password
+```
 
-Tech Stack
+Notes:
+- `DATABASE_URL` should point to your Supabase Postgres connection string.
+- If `DATABASE_URL` is not set, the app falls back to local SQLite (`db.sqlite3`) for development.
 
-Backend
-  * Python 3.12
-  * Django 6.0
-  * Django Authentication Framework
+## Local Setup
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
 
-Storage & Infrastructure
-  * AWS S3 (media file storage)
-  * django-storages + boto3
-  * Heroku (deployment)
+## Render Deployment
 
-Database
-  * SQLite (local development)
-  * PostgreSQL (production-ready configuration)
+### Build Command
+```bash
+pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
+```
 
-Frontend
-  * Django Templates
-  * Bootstrap (via crispy-bootstrap4)
+### Start Command
+```bash
+gunicorn django_project.wsgi
+```
 
-Architecture Highlights
-* Media uploads are stored in AWS S3 instead of the local filesystem, allowing the application to scale horizontally.
-* Environment variables are managed using python-dotenv locally and Heroku config vars in production.
-* Separate storage backends for static files and media files using Django’s STORAGES setting.
-* Secure email delivery via SMTP (Gmail) for password reset flows.
-* Explicit Python version locking using .python-version to ensure environment consistency.
-
-Environment Variables
-
-  The following environment variables are required:
-  
-    SECRET_KEY=your_django_secret_key
-    DEBUG=False
-    EMAIL_USER=your_email@gmail.com
-    EMAIL_PASS=your_email_app_password
-    AWS_ACCESS_KEY_ID=your_aws_access_key
-    AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-    AWS_STORAGE_BUCKET_NAME=your_s3_bucket_name
-
-
-Local Setup
-
-    git clone https://github.com/your-username/your-repo-name.git
-    cd your-repo-name
-    python -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
-    python manage.py migrate
-    python manage.py runserver
-
-
-Deployment
-* Deployed using Heroku (Heroku-24 stack)
-* Python version specified via .python-version
-* Static files collected using collectstatic
-* Media served directly from AWS S3
-
-Future Improvements
-* Add social authentication (Google/GitHub OAuth)
-* Replace SQLite with managed Postgres in production
-* Add pagination and search to blog posts
-* Improve test coverage with Django TestCase and pytest
-* Introduce CI/CD pipeline (GitHub Actions)
-
+## Media Uploads (Current Limitation)
+- Media is currently configured to local filesystem storage (`/media`) for development simplicity.
+- On Render, filesystem storage is ephemeral, so user uploads are **not persistent** across deploys/restarts.
+- Next stage: connect Django media storage to Supabase Storage for persistent uploads in production.
