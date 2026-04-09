@@ -1,62 +1,162 @@
-# Django Blog Application
+![Django](https://img.shields.io/badge/Django-6.0-green)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-blue)
+![Render](https://img.shields.io/badge/Render-Deployed-purple)
+# 🚀 Django Blog App
 
-A Django blog app with authentication, user profiles, and production deployment support for **Render + Supabase Postgres**.
+A full-stack blog application built with Django, featuring authentication, user profiles, and full CRUD functionality.
+Deployed in production using **Render (backend hosting)** and **Supabase (PostgreSQL database)** with production-grade configurations.
 
-## Key Features
-- User registration, login, logout, and password reset via email
-- User profile management with profile picture uploads
-- Environment-based configuration using `.env`
-- Static files served in production via WhiteNoise
-- PostgreSQL support via `DATABASE_URL`
+---
 
-## Tech Stack
-- Python 3.12
-- Django 6.0
-- Gunicorn + WhiteNoise
-- Supabase Postgres (production)
-- SQLite (local fallback)
+## 🌐 Live Demo
 
-## Environment Variables
-Set these in Render (and optionally in local `.env`):
+👉 [https://django-project-p85n.onrender.com](https://django-project-p85n.onrender.com)
 
-```bash
-SECRET_KEY=your_django_secret_key
+---
+
+## ✨ Features
+
+* 🔐 User authentication (Register, Login, Logout)
+* 👤 User profiles with profile picture support
+* 📝 Create, update, and delete blog posts
+* 📄 Paginated post feed
+* 🖼️ Default avatar fallback (handled at model level)
+* 🧠 Clean Django architecture (apps, models, templates)
+* 🚀 Production deployment with environment variables
+* 🗄️ PostgreSQL database via Supabase
+* ⚡ Static file serving using WhiteNoise
+
+---
+
+## 🛠️ Tech Stack
+
+**Backend**
+
+* Django
+* PostgreSQL (Supabase)
+
+**Frontend**
+
+* HTML
+* CSS
+* Bootstrap
+
+**Deployment**
+
+* Render (Web Service)
+* Supabase (Managed PostgreSQL)
+
+**Other Tools**
+
+* Gunicorn
+* WhiteNoise
+* dj-database-url
+
+---
+
+## ⚙️ Architecture
+
+Client (Browser)
+↓
+Render (Django + Gunicorn)
+↓
+Supabase (PostgreSQL)
+
+---
+
+## 🔧 Environment Variables
+
+Set these in Render or `.env`:
+
+SECRET_KEY=your_secret_key
 DEBUG=False
-DATABASE_URL=postgresql://postgres:<password>@<host>:6543/postgres?sslmode=require
-ALLOWED_HOSTS=your-service.onrender.com,your-custom-domain.com
-CSRF_TRUSTED_ORIGINS=https://your-service.onrender.com,https://your-custom-domain.com
-EMAIL_USER=your_email@gmail.com
-EMAIL_PASS=your_email_app_password
-```
+DATABASE_URL=your_supabase_database_url
+ALLOWED_HOSTS=your-render-domain
+CSRF_TRUSTED_ORIGINS=[https://your-render-domain](https://your-render-domain)
+EMAIL_USER=your_email
+EMAIL_PASS=your_app_password
 
-Notes:
-- `DATABASE_URL` should point to your Supabase Postgres connection string.
-- If `DATABASE_URL` is not set, the app falls back to local SQLite (`db.sqlite3`) for development.
+---
 
-## Local Setup
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+## 💻 Local Setup
+
+Clone the repo:
+
+git clone [https://github.com/your-username/django_project.git](https://github.com/your-username/django_project.git)
+cd django_project
+
+Create virtual environment:
+
 python -m venv venv
-source venv/bin/activate
+source venv/bin/activate   (Mac/Linux)
+venv\Scripts\activate      (Windows)
+
+Install dependencies:
+
 pip install -r requirements.txt
+
+Run migrations:
+
 python manage.py migrate
+
+Start server:
+
 python manage.py runserver
-```
 
-## Render Deployment
+---
 
-### Build Command
-```bash
-pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
-```
+## 🚀 Deployment (Render + Supabase)
 
-### Start Command
-```bash
-gunicorn django_project.wsgi
-```
+1. Create a Supabase project and copy the database URL
+2. Push your code to GitHub
+3. Create a new Web Service on Render
+4. Add environment variables
+5. Use the following commands:
 
-## Media Uploads (Current Limitation)
-- Media is currently configured to local filesystem storage (`/media`) for development simplicity.
-- On Render, filesystem storage is ephemeral, so user uploads are **not persistent** across deploys/restarts.
-- Next stage: connect Django media storage to Supabase Storage for persistent uploads in production.
+**Build Command**
+
+pip install -r requirements.txt && python manage.py collectstatic --noinput
+
+**Start Command**
+
+python manage.py migrate && gunicorn django_project.wsgi:application
+
+---
+
+## 🔮 Future Improvements
+
+* Django REST Framework API layer
+* Comment system
+* Like / Bookmark functionality
+* Rich text editor
+* CI/CD pipeline integration
+
+---
+
+## 📌 Key Learnings
+
+* Migrated deployment from Heroku to Render + Supabase
+* Managed environment variables securely in production
+* Fixed production issues (CSRF, ALLOWED_HOSTS, static files)
+* Debugged database connectivity issues (network + config)
+* Built a production-ready Django deployment workflow
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork this repo and improve it.
+
+---
+
+## 📄 License
+
+This project is open-source.
+---
+
+If you want to make this **10/10 recruiter-level**, next step is:
+
+* add **2–3 screenshots of UI**
+* add a **GIF demo (login → post → profile)**
+
+Say the word — I’ll generate that for you too 🚀
