@@ -1,6 +1,7 @@
 from django.db import models
 from PIL import Image
 from django.contrib.auth.models import User
+from django.conf import settings
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -8,6 +9,13 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+    
+    @property
+    def avatar_url(self):
+        image_name = (self.image.name or '').strip()
+        if image_name in {'', 'default.jpg', 'profile_pics/default.jpg'}:
+            return f'{settings.STATIC_URL}blog/default.jpg'
+        return self.image.url
     
     # def save(self, *args, **kwargs):
     #     super().save(*args, **kwargs)
